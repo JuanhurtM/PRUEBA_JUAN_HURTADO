@@ -1,0 +1,46 @@
+﻿@model PRUEBA_JUAN_HURTADO.Models.Resultado
+
+@{
+    ViewData["Title"] = "Crear Registro";
+}
+
+<h1>Registrar Participante</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mt-3">
+                <label asp-for="Nombre" class="control-label fs-5"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Pais" class="control-label fs-5"></label>
+                <input asp-for="Pais" class="form-control" />
+                <span asp-validation-for="Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Arranque" class="control-label fs-5">Peso levantado en Arranque</label>
+                <input asp-for="Arranque" class="form-control" />
+                <span asp-validation-for="Arranque" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Envio" class="control-label fs-5">Peso levantado en Envio</label>
+                <input asp-for="Envio" class="form-control" />
+                <span asp-validation-for="Envio" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Crear Registro" class="btn btn-outline-primary mt-4 fs-5" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-outline-secondary mt-2 fs-5" asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

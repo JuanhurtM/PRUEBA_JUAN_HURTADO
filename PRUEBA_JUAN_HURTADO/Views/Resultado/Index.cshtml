@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PRUEBA_JUAN_HURTADO.Models.Resultado>
+
+@{
+    ViewData["Title"] = "Tablero de Resultados";
+}
+
+<h1>Tablero de Resultados</h1>
+
+<p>
+    <a class="btn btn-outline-success mt-3 fs-5" asp-action="Create">Nuevo Registro</a>
+</p>
+<table class="table mt-4 fs-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pais) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arranque) (Kg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Envio) (Kg)
+            </th>
+            <th>Total Peso (Kg)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arranque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Envio)
+            </td>
+            <td>
+                    @{
+                        int total = (int)item.Envio + (int)item.Arranque;
+                        string dp = total.ToString();
+                        <p>@dp</p>
+                     }
+            </td>
+            <td>
+                <a class="btn btn-sm btn-outline-secondary fs-5" asp-action="Edit" asp-route-id="@item.Id">Detalles</a> |
+                <a class="btn btn-sm btn-outline-danger fs-5" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
